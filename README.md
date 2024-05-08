@@ -24,3 +24,4 @@ git commit 是对 HEAD 指针的操作。这个命令会产生一个新的提交
 # git revert
 
 同样是针对 HEAD 指针的操作，而且可以在分离的 HEAD 里用 revert
+随便改改
