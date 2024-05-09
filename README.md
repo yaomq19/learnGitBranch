@@ -114,3 +114,10 @@ git pull origin b1:b2 = git fetch origin b1 + git switch b2 + get merge origin/b
 【重要】*注意 —— `git push` 不带任何参数时的行为与 Git 的一个名为 `push.default` 的配置有关。它的默认值取决于你正使用的 Git 的版本，但是在教程中我们使用的是 `upstream`。 这没什么太大的影响，但是在你的项目中进行推送之前，最好检查一下这个配置。*
 
 git push 修改远端分支，也同步修改本地的远程分支，因为这也算一次“通信”
+
+### git push origin b1:b2 的过程中发生了什么
+
+【重要】首先，绝对不类似于把本地的 b1 和远程的 b2 进行了一次 merge，这是完全错误的理解！
+
+- 可以执行的前提：本地的 origin/b2 分支是 本地 b1 分支的直接祖先
+- 执行的过程：让 origin/b2 指针快进并指向本地 b1，然后对 origin/b2 进行向上遍历，**把路径上所有远程仓库中没有的东西全部复制过去**
